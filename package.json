@@ -8,9 +8,11 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "mapbox-gl": "^1.2.1",
     "next": "latest",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "react-mapbox-gl": "^4.6.0"
   },
   "devDependencies": {
     "@types/node": "^11.13.9",
