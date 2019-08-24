@@ -2,14 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactMapboxGl from 'react-mapbox-gl';
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
+import { ProviderType } from './map.interface';
+import { providerMock } from './provider.mock';
+import Provider from './provider'
 
 const MapArea = ReactMapboxGl({
   accessToken:
     'pk.eyJ1IjoiZmFrZXVzZXJnaXRodWIiLCJhIjoiY2pwOGlneGI4MDNnaDN1c2J0eW5zb2ZiNyJ9.mALv0tCpbYUPtzT7YysA2g'
 });
 
-export default function Map() {
-
+export default function Map(): any {
+  const providers: ProviderType[] = providerMock;
+  // const providerLocation = providers.map(provider => {
+  //   return <Provider/>
+  // })
   return (
     <div>
       <MapArea
