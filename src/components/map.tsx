@@ -2,14 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
-<<<<<<< HEAD
 import  ProviderType  from './map.interface';
 import { providerMock } from './provider.mock';
 import styled from 'styled-components';
-=======
-import ProviderType  from './map.interface';
-import { providerMock } from './provider.mock';
->>>>>>> master
+import Booking from './Booking';
 
 const MapArea = ReactMapboxGl({
   accessToken:
@@ -38,10 +34,12 @@ color: white;
 
 export default class Map extends React.Component {
   //plug call here
+
   public state: any = {
     center: [153.0251, -27.4698],
     providers: providerMock,
-    providerSelected: undefined
+    providerSelected: undefined,
+    showComponent: false,
   };
 
   private markerClick = (provider: ProviderType): any => {
@@ -51,9 +49,15 @@ export default class Map extends React.Component {
     });
   };
 
+  _onButtonClick() {
+    this.setState({
+      showComponent: true,
+    });
+  }
 
   render() {
     const { providers, providerSelected } = this.state;
+
     return (
       <div>
         <MapArea
@@ -85,7 +89,8 @@ export default class Map extends React.Component {
                 <p>{providerSelected.beds.male.available} Beds available</p>
                 <p>{providerSelected.beds.male.max} Bed Total </p>
               </div>
-              <StyledButton>Book a bed</StyledButton>
+              <StyledButton onClick={this._onButtonClick.bind(this)}>Book a bed</StyledButton>
+              {this.state.showComponent ? <Booking props={providerSelected}/> : null}
             </StyledPopup>
           </Popup>
         }
