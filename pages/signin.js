@@ -66,11 +66,10 @@ class SignIn extends React.Component {
                 <div className="notification">{error}</div>
                 <Form>
                   <FormGroup>
-                    <Label>Email:</Label>
+                    <Label>Username:</Label>
                     <Input
                       onChange={this.onChange.bind(this, "email")}
-                      type="email"
-                      name="email"
+                      name="username"
                       style={{ height: 50, fontSize: "1.2em" }}
                     />
                   </FormGroup>
