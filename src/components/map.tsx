@@ -19,6 +19,18 @@ const StyledPopup = styled.div`
   border-radius: 2px;
 `;
 
+const StyledButton =  styled.button`
+border-radius: 4px;
+border: 1px solid #458B00;
+background-color: #458B00;
+color: white;
+
+&:active {
+  background-color: white;
+  color: #458B00;
+}
+`
+
 export default class Map extends React.Component {
   //plug call here
   public state: any = {
@@ -68,6 +80,7 @@ export default class Map extends React.Component {
                 <p>{providerSelected.beds.male.available} Beds available</p>
                 <p>{providerSelected.beds.male.max} Bed Total </p>
               </div>
+              <StyledButton>Book a bed</StyledButton>
             </StyledPopup>
           </Popup>
         }
