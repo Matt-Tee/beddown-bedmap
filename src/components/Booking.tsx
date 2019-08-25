@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './Booking.css'
 
 export default function Booking(props:any) {
 
@@ -28,12 +29,16 @@ export default function Booking(props:any) {
     const bookingForm = (
     <div>
         <form onSubmit={handleSubmit}>
-            <label> Name:
+            <label id="label">Your Full Name</label>
+            <br/>
             <input name="name" type="text" value={name} onChange={changeHandler} />
-            </label>
-            <label> Mobile Number:
+            <br/>
+            <br/>
+            <label id="label">Your Mobile Number</label>
+            <br/>
             <input name="phone" type="text" value={phone} onChange={changeHandler} />
-            </label>
+            <br/>
+            <br/>
             <button type="submit">Confirm Booking</button>
         </form>
     </div>)
@@ -41,7 +46,7 @@ export default function Booking(props:any) {
     return (
         <div>
             <h1>{props.provider.name}</h1>
-            <p>{props.location.address}</p>
+            <p>{props.provider.location.address}</p>
             
             {displayInitiated ? initiateBookingButton: bookingForm }
 
