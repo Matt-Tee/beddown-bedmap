@@ -11,12 +11,23 @@ import {
 } from "reactstrap";
 import { CardText, CardTitle, Col, Row } from "reactstrap";
 
+// const Nominatim = require('nominatim-geocoder')
+// const geocoder = new Nominatim()
+
+// geocoder.search( { q: '11 hardgrave rd, west end 4101' } )
+//     .then((response) => {
+//         console.log(response)
+//     })
+//     .catch((error) => {
+//         console.log(error)
+//     })
+
 const ProviderList = (
   { data: { loading, error, providers }, search },
   req
 ) => {
   if (error) return "Error loading providers";
-  //if restaurants are returned from the GraphQL query, run the filter query
+  //if providers are returned from the GraphQL query, run the filter query
   //and set equal to variable providerSearch
 
   if (providers && providers.length) {
@@ -28,31 +39,31 @@ const ProviderList = (
       return (
         <div>
           <div className="h-100">
-            {searchQuery.map(res => (
-              <Card
-                style={{ width: "30%", margin: "0 10px" }}
-                className="h-100"
-                key={res.id}
-              >
-                <CardImg
-                  top={true}
-                  style={{ height: 250 }}
-                  src={`http://beddown.digital8.com.au${res.image.url}`}
-                />
-                <CardBody>
-                  <CardTitle>{res.name}</CardTitle>
-                  <CardText>{res.description}</CardText>
-                </CardBody>
-                <div className="card-footer">
-                  <Link
-                    as={`/providers?id=${res.id}`}
-                    href={`/providers?id=${res.id}`}
-                  >
-                    <a className="btn btn-primary">View</a>
-                  </Link>
-                </div>
-              </Card>
-            ))}
+            {searchQuery.map(res => {
+              let imageUrl = res.image ? res.image.url : '/uploads/09186112bef94b1491ce6d928a7b3b43.jpg'
+              return (
+                <Card
+                  style={{ width: "30%", margin: "0 10px" }}
+                  className="h-100"
+                  key={res.id}
+                >
+                  <CardImg
+                    top={true}
+                    style={{ height: 250 }}
+                    src={`http://beddown.digital8.com.au${imageUrl}`}
+                  />
+                  <CardBody>
+                    <CardTitle>{res.name}</CardTitle>
+                    <CardText>{res.description}</CardText>
+                  </CardBody>
+                  <div className="card-footer">
+                    <Link href={`/providers?id=${res.id}`}>
+                      <a className="btn btn-primary">View</a>
+                    </Link>
+                  </div>
+                </Card>
+              )}
+            )}
           </div>
 
           <style jsx global>
@@ -87,6 +98,7 @@ const query = gql`
       id
       name
       description
+      geolocation
       image {
         url
       }
