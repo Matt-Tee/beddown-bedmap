@@ -3,7 +3,7 @@ import './App.css';
 import Map from './components/map'
 
 const App: React.FC = () => {
-  return <div> 
+  return <div>
     <Map />
   </div>;
 };

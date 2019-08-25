@@ -1,4 +1,5 @@
 export interface ProviderType {
+  key: number;
   geoLocation: number[];
   address: Address;
   bedsAmount: number;
