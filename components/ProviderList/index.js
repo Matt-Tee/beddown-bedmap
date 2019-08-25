@@ -23,7 +23,7 @@ import { CardText, CardTitle, Col, Row } from "reactstrap";
 //     })
 
 const ProviderList = (
-  { data: { loading, error, providers }, search },
+  { data: { loading, error, providers } },
   req
 ) => {
   if (error) return "Error loading providers";
@@ -31,63 +31,55 @@ const ProviderList = (
   //and set equal to variable providerSearch
 
   if (providers && providers.length) {
-    //searchQuery
-    const searchQuery = providers.filter(query =>
-      query.name.toLowerCase().includes(search)
-    );
-    if (searchQuery.length != 0) {
-      return (
-        <div>
-          <div className="h-100">
-            {searchQuery.map(res => {
-              let imageUrl = res.image ? res.image.url : '/uploads/09186112bef94b1491ce6d928a7b3b43.jpg'
-              return (
-                <Card
-                  style={{ width: "30%", margin: "0 10px" }}
-                  className="h-100"
-                  key={res.id}
-                >
-                  <CardImg
-                    top={true}
-                    style={{ height: 250 }}
-                    src={`http://beddown.digital8.com.au${imageUrl}`}
-                  />
-                  <CardBody>
-                    <CardTitle>{res.name}</CardTitle>
-                    <CardText>{res.description}</CardText>
-                  </CardBody>
-                  <div className="card-footer">
-                    <Link href={`/providers?id=${res.id}`}>
-                      <a className="btn btn-primary">View</a>
-                    </Link>
-                  </div>
-                </Card>
-              )}
+    return (
+      <div>
+        <div className="h-100">
+          {providers.map(res => {
+            let imageUrl = res.image ? res.image.url : '/uploads/09186112bef94b1491ce6d928a7b3b43.jpg'
+            return (
+              <Card
+                style={{ width: "30%", margin: "0 10px" }}
+                className="h-100"
+                key={res.id}
+              >
+                <CardImg
+                  top={true}
+                  style={{ height: 250 }}
+                  src={`http://beddown.digital8.com.au${imageUrl}`}
+                />
+                <CardBody>
+                  <CardTitle>{res.name}</CardTitle>
+                  <CardText>{res.description}</CardText>
+                </CardBody>
+                <div className="card-footer">
+                  <Link href={`/providers?id=${res.id}`}>
+                    <a className="btn btn-primary">View</a>
+                  </Link>
+                </div>
+              </Card>
             )}
-          </div>
-
-          <style jsx global>
-            {`
-              a {
-                color: white;
-              }
-              a:link {
-                text-decoration: none;
-                color: white;
-              }
-              a:hover {
-                color: white;
-              }
-              .card-columns {
-                column-count: 3;
-              }
-            `}
-          </style>
+          )}
         </div>
-      );
-    } else {
-      return <h1>No Providers Found</h1>;
-    }
+
+        <style jsx global>
+          {`
+            a {
+              color: white;
+            }
+            a:link {
+              text-decoration: none;
+              color: white;
+            }
+            a:hover {
+              color: white;
+            }
+            .card-columns {
+              column-count: 3;
+            }
+          `}
+        </style>
+      </div>
+    );
   }
   return <h1>Loading</h1>;
 };
@@ -98,7 +90,7 @@ const query = gql`
       id
       name
       description
-      geolocation
+      geoLocation
       image {
         url
       }

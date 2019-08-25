@@ -15,10 +15,6 @@ import {
 class Index extends React.Component {
   constructor(props) {
     super(props);
-    //query state will be passed to ProviderList for the filter query
-    this.state = {
-      query: ""
-    };
   }
   onChange(e) {
     //set the state = to the input typed in the search Input Component
@@ -30,13 +26,7 @@ class Index extends React.Component {
       <div className="container-fluid">
         <Row>
           <Col>
-            <div className="search">
-              <InputGroup>
-                <InputGroupAddon addonType="append"> Search </InputGroupAddon>
-                <Input onChange={this.onChange.bind(this)} />
-              </InputGroup>
-            </div>
-            <ProviderList search={this.state.query} />
+            <ProviderList />
           </Col>
         </Row>
         <style jsx>
