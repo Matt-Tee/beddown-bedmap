@@ -2,9 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
+<<<<<<< HEAD
 import  ProviderType  from './map.interface';
 import { providerMock } from './provider.mock';
 import styled from 'styled-components';
+=======
+import ProviderType  from './map.interface';
+import { providerMock } from './provider.mock';
+>>>>>>> master
 
 const MapArea = ReactMapboxGl({
   accessToken:
