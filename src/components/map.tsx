@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
-import { ProviderType } from './map.interface';
+import  ProviderType  from './map.interface';
 import { providerMock } from './provider.mock';
 import styled from 'styled-components';
 
@@ -24,19 +24,19 @@ export default class Map extends React.Component {
   public state: any = {
     center: [153.0251, -27.4698],
     providers: providerMock,
-    provider: undefined
+    providerSelected: undefined
   };
 
   private markerClick = (provider: ProviderType): any => {
     this.setState({
       center: provider.geoLocation,
-      provider: provider
+      providerSelected: provider
     });
   };
 
 
   render() {
-    const { providers } = this.state;
+    const { providers, providerSelected } = this.state;
     return (
       <div>
         <MapArea
@@ -55,18 +55,18 @@ export default class Map extends React.Component {
             {providers.map((provider: ProviderType) => {
               return (
                 <Feature
-                  key={provider.key}
+                  key={provider.id}
                   coordinates={provider.geoLocation}
                   onClick={this.markerClick.bind(this, provider)}
                 />
               );
             })}
           </Layer>
-          { this.state.provider && <Popup coordinates={this.state.provider.geoLocation}>
+          { providerSelected && <Popup coordinates={providerSelected.geoLocation}>
             <StyledPopup>
               <div>
-                <p>{this.state.provider.bedsAmount} Beds available</p>
-                <p>{this.state.provider.bedsAvailable} Bed Total </p>
+                <p>{providerSelected.beds.male.available} Beds available</p>
+                <p>{providerSelected.beds.male.max} Bed Total </p>
               </div>
             </StyledPopup>
           </Popup>

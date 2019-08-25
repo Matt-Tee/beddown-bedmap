@@ -1,54 +1,31 @@
-import { ProviderType, Address } from './map.interface';
+import ProviderType from './map.interface'
 
-const addressMock: Address[] = [
-  {
-    city: 'Brisbane',
-    number: 14,
-    postcode: 4000,
-    state: 'Qld',
-    street: 'Charlotte st',
-    suburb: 'Brisbane City'
-  },
-  {
-    city: 'Brisbane',
-    number: 14,
-    postcode: 4000,
-    state: 'Qld',
-    street: 'Wickham St',
-    suburb: 'Fortidtude valley'
-  },
-  {
-    city: 'Brisbane',
-    number: 14,
-    postcode: 4000,
-    state: 'Qld',
-    street: 'Boundary st',
-    suburb: 'Springhill'
-  },
-];
 export const providerMock: ProviderType[] = [
   {
-    key: 1,
-    address: addressMock[0],
+    id: 1,
+    name: "Charlotte Street Building",
+    location: { address: '14 Charlotte st, Brisbane, QLD, 400', directions: '' },
+    beds: { male: { available: 8, max: 10 } },
+    image: "" ,
+    contact: { phone: '1800 111 111', email: 'notfake@fake.com.au' },
     geoLocation: [153.02732, -27.470601],
-    bedsAmount: 6,
-    bedsAvailable: 10,
-    gender: 'Mixed'
-},
-{
-    key: 2,
-    address: addressMock[1],
+  },
+  {
+    id: 2,
+    name: "Wickham Street Building",
+    location: { address: '14 Wickham St, Fortidtude valley, Qld, 4000', directions: '' },
+    beds: { male: { available: 8, max: 10 } },
+    image: "" ,
+    contact: { phone: '1800 111 111', email: 'notfake@fake.com.au' },
     geoLocation: [153.037877, -27.453294],
-    bedsAmount: 6,
-    bedsAvailable: 10,
-    gender: 'Mixed'
-},
-{
-    key: 3,
-    address: addressMock[2],
+  },
+  {
+    id: 3,
+    name: "Boundary Street building",
+    location: { address: '14 Boundary st, Springhill, QLD, 4000', directions: '' },
+    beds: { male: { available: 8, max: 10 } },
+    image: "" ,
+    contact: { phone: '1800 111 111', email: 'notfake@fake.com.au' },
     geoLocation: [153.022095, -27.470463],
-    bedsAmount: 6,
-    bedsAvailable: 10,
-    gender: 'Mixed'
   },
 ];
